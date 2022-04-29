@@ -2,11 +2,11 @@
 
 namespace AutomationSessions
 {
-    class Program
+    class EntryPoint
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
         }
     }
 }
