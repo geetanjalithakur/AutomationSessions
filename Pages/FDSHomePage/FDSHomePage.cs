@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutomationSessions
 {
-    class FDSHomePage
+     class FDSHomePage
     {
         private IWebDriver _driver;
 
@@ -16,9 +16,36 @@ namespace AutomationSessions
             _driver = driver;
         }
 
-        public IWebElement ComboBoxToolSelector => _driver.FindElement(By.XPath("//input[@role='combobox']"));
-   
-    
-    }
-  
+        //Add New LSP Tool button
+         protected IWebElement AddLSPButton => _driver.FindElement(By.XPath("//button[contains(text (), 'Add New LSP tool')]]"));
+        protected IWebElement AddRPButton => _driver.FindElement(By.XPath("//button[contains(text(), ' Add New RP tool')]"));
+        protected IWebElement SearchBox => _driver.FindElement(By.XPath("//input[@laceholder='Search'"));
+        protected IWebElement ManageSeedAssociationHome=> _driver.FindElement(By.XPath("//tr[1]/td/a[@title='Manage SEED Associations']"));
+        protected IWebElement FDSBuilderButtonHome => _driver.FindElement(By.XPath("//tr[1]/td/a[@title ='FDS Builder']"));
+        protected IWebElement FDSBuilderButtonHome => _driver.FindElement(By.XPath("//tr[1]/td/a[@title ='FDS Builder']"));
+
+
+
+
+
+        ///button[text ()= ' Add New LSP tool'] <summary>
+        /// button[text ()= ' Add New RP tool']
+        /// </summary>
+        public void xpathe()
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                //string xpath = "//tr[3]/td/a[@title='Manage SEED Associations']";
+
+             string xpath=   String.Format("//tr[{0}]/td/a[@title='Manage SEED Associations']", i);
+
+        }
+       
+
+            }
+
+
+
+}
+
 }
