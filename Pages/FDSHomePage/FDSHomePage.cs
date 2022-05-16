@@ -1,4 +1,5 @@
-﻿using AutomationSessions.Interface;
+﻿using AutomationSessions.Config;
+using AutomationSessions.Interface;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace AutomationSessions
 {
-    class FDSHomePage: IRowColumns
+    class FDSHomePage : XpathOfTableElements
     {
         private IWebDriver _driver;
 
         public FDSHomePage(IWebDriver driver)
         {
             _driver = driver;
-            TableElements();
+            rowsandcolumns();
         }
 
         //Add New LSP Tool button
@@ -32,45 +33,35 @@ namespace AutomationSessions
         protected IWebElement DeleteButtonBuilderPage => _driver.FindElement(By.XPath("//button[@value='Delete']"));
         protected IWebElement FPCPOC => _driver.FindElement(By.XPath("//button[@title='Facility power cable' and @value='FPC']]"));
 
-        //Gives me the elementsof rows
-        protected IList<IWebElement> NoOfRowsFdsHome => _driver.FindElements(By.XPath("//tr[@data-kendo-grid-item-index]"));
 
-
-        public Dictionary<string, string> dictionaryOfFdsHomePage { get; set; } = new Dictionary<string, string>();
-        public void TableElements()
+        private void rowsandcolumns()
         {
-            string xPathofElement;
-            for (int i = 1; i <= NoOfRowsFdsHome.Count; i++)
-            {
-                for (int j = 1; j <= 3; j++)
-                {
-                    if (j == 1)
-                    {
-                        xPathofElement = String.Format("//tr[{0}]/td/a[@title='Manage SEED Associations']", i);
-                        dictionaryOfFdsHomePage.Add(i + ":" + j, xPathofElement);
-                    }
+                protected IList<IWebElement> NoOfRowsFdsHome => _driver.FindElements(By.XPath("//tr[@data-kendo-grid-item-index]"));
+             protected IList<IWebElement> NoOfColumnsFdsHome => _driver.FindElements(By.XPath(""));
 
-                    if (j == 2)
-                    {
-                        xPathofElement = String.Format("//tr[{0}]/td/a[@title ='FDS Builder']", i);
-                        dictionaryOfFdsHomePage.Add(i + ":" + j, xPathofElement);
-                    }
+             protected string[] xpaths = { "//tr[{0}]/td/a[@title='Manage SEED Associations']",
+            "//tr[{0}]/td/a[@title ='FDS Builder'] ",
+            "//tr[{0}]/td/a[@title ='Fds Tool SEED']" };
 
-                    if (j == 3)
-                    {
-                        xPathofElement = String.Format("//tr[1]/td/a[@title ='Fds Tool SEED']", i);
-                        dictionaryOfFdsHomePage.Add(i + ":" + j, xPathofElement);
-                    }
-                }
-            }
-        }
+         }
 
-       
-        
+
+
+
+            XpathOfTableElements abc = new XpathOfTableElements();
+    public Dictionary<string, string> TableDictionary = abc.tableElements(NoOfRowsFdsHome.Count, NoOfColumnsFdsHome.Count, xpaths);
+
+
+
+
     }
+}   
+   
+
+
+        
 
 
 
-}
 
 
