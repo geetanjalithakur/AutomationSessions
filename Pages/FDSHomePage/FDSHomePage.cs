@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutomationSessions
 {
-    class FDSHomePage : XpathOfTableElements
+   public class FDSHomePage : XpathOfTableElements
     {
         private IWebDriver _driver;
 
@@ -33,28 +33,26 @@ namespace AutomationSessions
         protected IWebElement DeleteButtonBuilderPage => _driver.FindElement(By.XPath("//button[@value='Delete']"));
         protected IWebElement FPCPOC => _driver.FindElement(By.XPath("//button[@title='Facility power cable' and @value='FPC']]"));
 
+        protected IList<IWebElement> NoOfRowsFdsHome => _driver.FindElements(By.XPath("//tr[@data-kendo-grid-item-index]"));
+        protected IList<IWebElement> NoOfColumnsFdsHome => _driver.FindElements(By.XPath(""));
 
-        private void rowsandcolumns()
-        {
-                protected IList<IWebElement> NoOfRowsFdsHome => _driver.FindElements(By.XPath("//tr[@data-kendo-grid-item-index]"));
-             protected IList<IWebElement> NoOfColumnsFdsHome => _driver.FindElements(By.XPath(""));
-
-             protected string[] xpaths = { "//tr[{0}]/td/a[@title='Manage SEED Associations']",
+        protected string[] xpaths = { "//tr[{0}]/td/a[@title='Manage SEED Associations']",
             "//tr[{0}]/td/a[@title ='FDS Builder'] ",
             "//tr[{0}]/td/a[@title ='Fds Tool SEED']" };
 
-         }
-
-
-
-
-            XpathOfTableElements abc = new XpathOfTableElements();
-    public Dictionary<string, string> TableDictionary = abc.tableElements(NoOfRowsFdsHome.Count, NoOfColumnsFdsHome.Count, xpaths);
-
+        private void rowsandcolumns()
+        {
+          
+        var abc = new XpathOfTableElements();
+        public Dictionary<string, string> TableDictionary = abc.tableElements(NoOfRowsFdsHome.Count, NoOfColumnsFdsHome.Count, xpaths);
 
 
 
     }
+
+
+
+}
 }   
    
 
