@@ -8,7 +8,7 @@ namespace AutomationSessions.BaseClass
 {
     class BaseVariables
     {
-        public string homepageUrl = "https://fceecalctest.intel.com";
-        public string fdsbuilderpage = "https://fceecalctest.intel.com/fds/builder/";
+        public static string homepageUrl = "https://fceecalctest.intel.com";
+        public static string fdsbuilderpage = "https://fceecalctest.intel.com/fds/builder/";
     }
 }

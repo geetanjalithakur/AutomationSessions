@@ -33,6 +33,11 @@ namespace AutomationSessions.Actions
             }
         }
 
+        public void clickManageSeedAssociation()
+        {
+            ManageSeedAssociationHome.Click();
+        }
+
 
 
 
